@@ -13,8 +13,8 @@ services:
       timeout: 10s
       retries: 10
 
-# We're just jotting down the code to run a containerized version of postgres on docker, using the 
-# above info as reference (following tutorial)
+#### We're just jotting down the code to run a containerized version of Postgres ny_taxi DB on docker, using the 
+#### above info as reference (following tutorial)
 
 docker run -it \
     --name pg_ny_taxi \
@@ -50,7 +50,7 @@ docker run -it \
   dpage/pgadmin4
 
 
-## Adding the Postgres image container to a network (docker network)
+#### Adding the Postgres pg_ny_taxi container to a network (docker network)
 
 # Use this code (since you already have a pg_ny_taxi container)
 docker network connect pg-network pg_ny_taxi
@@ -68,7 +68,7 @@ docker run -it \
     --name pg_ny_taxi \
     postgres:13
 
-## Adding Pgadmin container to a network
+#### Adding Pgadmin container to a network
 
 docker run -it \
     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
@@ -77,3 +77,5 @@ docker run -it \
     --network=pg-network \
     --name pgadmin \
     dpage/pgadmin4
+
+

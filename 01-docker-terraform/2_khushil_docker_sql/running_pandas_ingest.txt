@@ -1,0 +1,26 @@
+## code to run pandas_ingest.py
+python3 pandas_ingest.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips_data \
+  --url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-01.parquet"
+
+## I believe table_name here refers to the table name in the Postgres database,
+## The Database ny_taxi contains many tables and one of them is yellow_taxi_trips_data 
+
+## Code to build and run docker pandas_ingest container
+docker build -f Dockerfile.pandas_ingest -t taxi_ingest:v001 .
+
+docker run -it \
+  --network=pg-network \
+  taxi_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pg_ny_taxi \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_trips_data \
+    --url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-01.parquet"

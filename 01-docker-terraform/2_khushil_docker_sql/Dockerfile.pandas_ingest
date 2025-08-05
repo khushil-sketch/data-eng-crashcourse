@@ -1,0 +1,18 @@
+#NOTE: DOCKER doesn't support in-line comments
+
+# the base image for the Docker container
+FROM python:3.9.1
+
+RUN apt-get install wget
+RUN pip install pandas sqlalchemy psycopg2 pyarrow
+
+## psycopg2 is a PostgreSQL adapter for Python, allowing interaction with PostgreSQL databases.
+## apt-get install wget is used to install wget, a utility for downloading files from the web.
+
+WORKDIR /app
+
+# copy the pipeline script into the container, we keep the pipeline.py name as it is in the container
+COPY pandas_ingest.py pandas_ingest.py 
+
+# ENTRYPOINT sets the main command that gets run when a container starts.
+ENTRYPOINT [ "python", "pandas_ingest.py" ]
