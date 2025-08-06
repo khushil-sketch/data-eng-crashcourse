@@ -1,0 +1,22 @@
+services:
+  pg_ny_taxi:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    volumes:
+      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+      ## rw - read and write
+      ## Volumes in Docker are a way to persist data across container restarts.
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    volumes:
+      - ./data_pgadmin:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "8080:80"
