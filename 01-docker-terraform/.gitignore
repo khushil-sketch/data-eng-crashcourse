@@ -4,3 +4,7 @@ yellow_tripdata_2021-01.csv
 data_pgadmin
 2_khushil_docker_sql/yellow_tripdata_2021-01_converted_to_csv
 ignore
+1_khushil_terraform_gcp/keys/credentials.json
+1_khushil_terraform_gcp/keys/our-velocity-468219-j5-7095623c0f4e.json:Zone.Identifier
+
+## the paths you add here are relative, no need to include 01-docker-terraform/
